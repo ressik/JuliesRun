@@ -1,0 +1,139 @@
+<!DOCTYPE html> 
+<html> 
+<head> 
+<title>The Royal Race Utah!</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.css" />
+<script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.0.1/jquery.mobile-1.0.1.min.js"></script>
+<script src="../scripts/mobile.js"></script>
+<style type="text/css">.ui-page {background: transparent url(images/bg-blue4.png);background-repeat:repeat-v;background-size: 100%;background-color:#000000;}</style>
+</head> 
+<body> 
+<div data-role="page">
+	<div data-role="header" data-position="inline" data-theme="b">
+		<a href="index.html" data-icon="home" data-theme="e" data-transition="none">Home</a>
+		<h1>REGISTER</h1>
+	</div>
+	<div data-role="content">
+		<div class="content-primary" style="color:#FFF;">
+			<h2>Want To Join Us?</h2>
+			<p>Simply fill out the registration form below to let us know you're coming.</p>
+			<p>After that, complete payment by clicking the "Checkout" button on the next page. Upon receipt of payment, your registration will be complete.</p>
+			<form id="regForm">
+			<div data-role="fieldcontain" data-theme="b">
+			<label for="firstName">First Name:</label>
+			<input type="text" name="firstName" id="firstName" value=""  />
+			<label for="lastName">Last Name:</label>
+			<input type="text" name="lastName" id="lastName" value=""  />
+			<label for="email">Email:</label>
+			<input type="text" name="email" id="email" value=""  />
+			<label for="race" class="select">Race:</label>
+			<select name="race" id="race" data-native-menu="false">
+			<option value="">Click to choose...</option>
+			<option value="5k">$25 5K</option>
+			<option value="1k">$15 Kid K (1K)</option>
+			<option value="Spirit Runner">Spirit Runner</option>
+			</select>
+			
+			<label for="rank" class="select">Rank:</label>
+			<select name="rank" id="rank" data-native-menu="false">
+			<option value="">Click to choose...</option>
+			<option value="Under 12">Under 12</option>
+			<option value="12-19">Age 12-19</option>
+			<option value="20-29">Age 20-29</option>
+			<option value="30-39">Age 30-39</option>
+			<option value="40-49">Age 40-49</option>
+			<option value="50-59">Age 50-65</option>
+			<option value="Over 65">Over 65</option>
+			<option value="Wheelchair">Wheelchair</option>
+			</select>
+			
+			<label for="shirtSize" class="select">Shirt Size:</label>
+			<select name="shirtSize" id="shirtSize" data-native-menu="false">
+			<option value="">Click to choose...</option>
+			<option value="Child Small">Child Small</option>
+			<option value="Child Medium">Child Medium</option>
+			<option value="Child Large">Child Large</option>
+			<option value="X-Small">X-Small</option>
+			<option value="Small">Small</option>
+			<option value="Medium">Medium</option>
+			<option value="Large">Large</option>
+			<option value="X-Large">X-Large</option>
+			<option value="XX-Large">XX-Large</option>
+			<option value="XXX-Large">XXX-Large</option>
+			</select>
+			<br>
+			<button onclick="register();return false;" data-theme="e">Register Now</button>
+			</div>
+			
+			</form>
+		</div>
+		
+		<div class="content-secondary">
+			<a id="dialogLink" href="#regError" data-rel="dialog" data-transition="flip" style="display:none"></a>		
+		</div>
+	</div>
+
+</div>
+
+
+
+<!-- Registration Error Page -->
+<div id="regError" data-role="page">
+	<div data-role="header">
+	  <h1>Error!</h1>
+	</div>    
+	<div data-role="content" id="text">
+		Please make sure you have filled in all fields correctly.
+		<p/>
+		<button data-theme="e" id="errorDialogClose">Close</button>
+	</div>  
+</div>
+
+
+
+<!-- Registration Success Dialog -->
+<div id="regSuccessDialog" data-role="page">
+  <div data-role="header">
+    <h1>Successfully Registered!</h1>
+  </div>    
+ 	  <div data-role="content" id="text">
+ 	  	Thanks <span id="thanksName"></span>! You're almost done!<br/>
+		Simply choose a payment option, then click the checkout button below and complete the payment process to finalize your registration.
+		
+		<p/>
+			<form action="https://checkout.google.com/api/checkout/v2/checkoutForm/Merchant/339210514174784" id="BB_BuyButtonForm" method="post" name="BB_BuyButtonForm" target="_top">
+			    <table class="gCheckout">
+			        <tr>
+			            <td align="right" width="1%">
+			                <select name="item_selection_1" class="text ui-widget-content ui-corner-all" data-native-menu="false">
+			                    <option value="1">$25.00 - The Royal Race - 5K</option>
+			                    <option value="2">$15.00 - The Royal Race - Kid K (1K)</option>
+			                </select>
+			                <input name="item_option_name_1" type="hidden" value="The Royal Race - 5k"/>
+			                <input name="item_option_price_1" type="hidden" value="25.0"/>
+			                <input name="item_option_description_1" type="hidden" value="Adult 5k Race."/>
+			                <input name="item_option_quantity_1" type="hidden" value="1"/>
+			                <input name="item_option_currency_1" type="hidden" value="USD"/>
+			                <input name="item_option_name_2" type="hidden" value="The Royal Race - Kids k (1k)"/>
+			                <input name="item_option_price_2" type="hidden" value="15.0"/>
+			                <input name="item_option_description_2" type="hidden" value="Children's 1K Race"/>
+			                <input name="item_option_quantity_2" type="hidden" value="1"/>
+			                <input name="item_option_currency_2" type="hidden" value="USD"/>
+			            </td>
+			            <td align="left" width="1%" style="display:none">
+			                <input style="none;" alt="" src="https://checkout.google.com/buttons/buy.gif?merchant_id=339210514174784&amp;w=117&amp;h=48&amp;style=trans&amp;variant=text&amp;loc=en_US" type="image"/>
+			            </td>
+			            
+			        </tr>
+			    </table>
+			    <input type="submit" value="Checkout" id="payBtn"></input>
+			</form>
+		<button data-theme="e" id="successDialogClose">Close</button>
+ 	  </div>    
+</div>
+
+</body>
+</html>
